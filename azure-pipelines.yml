@@ -90,15 +90,16 @@ stages:
             inputs:
               action: createSecret
               secretName: $(imagePullSecret)
-              dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
+              dockerRegistryEndpoint: $(dockerRegistryServiceConnection)          
+          - checkout: self
 
           - task: KubernetesManifest@0
             displayName: Deploy to Kubernetes cluster
             inputs:
               action: deploy
               manifests: |
-                ./manifests/deployment.yml
-                ./manifests/service.yml
+                manifests/deployment.yml
+                manifests/service.yml
               imagePullSecrets: |
                 $(imagePullSecret)
               containers: |
@@ -154,6 +155,8 @@ stages:
               namespace: $(k8sNamespaceForPR)
               arguments: svc
               outputFormat: jsonpath='http://{.items[0].status.loadBalancer.ingress[0].ip}:{.items[0].spec.ports[0].port}'
+
+          - checkout: self
 
           # Getting the IP of the deployed service and writing it to a variable for posing comment
           - script: |
