@@ -26,10 +26,11 @@ variables:
 
 steps:
 - script: |
-    echo current ls
     ls
-    echo ImageTag name
-    echo See $(imageRepository)
+    echo ===ImageTag name===
+    echo ImageTag : $(imageRepository)
+    echo ===Tag name===
+    echo Tag : $(tag)
 
 #stages:
 #- stage: Build
