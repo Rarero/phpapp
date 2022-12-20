@@ -31,10 +31,13 @@ steps:
     echo ImageTag : $(imageRepository)
     echo ===Tag name===
     echo Tag : $(tag)
-    echo ===Tag name===
+    echo ===manifests files===
     cd ./ manifests
     ls
     cd ..
+    echo
+    echo ===Pipeline.Workspace===
+    echo Tag : $(Pipeline.Workspace)
 
 #stages:
 #- stage: Build
