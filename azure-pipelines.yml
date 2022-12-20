@@ -31,6 +31,10 @@ steps:
     echo ImageTag : $(imageRepository)
     echo ===Tag name===
     echo Tag : $(tag)
+    echo ===Tag name===
+    cd ./ manifests
+    ls
+    cd ..
 
 #stages:
 #- stage: Build
