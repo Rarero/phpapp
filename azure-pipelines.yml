@@ -33,6 +33,10 @@ stages:
     pool:
       vmImage: $(vmImageName)
     steps:
+    - script: |
+        echo ImageTag name
+        echo See $(imageRepository)
+
     - task: Maven@4
       inputs:
         mavenPomFile: 'pom.xml'
